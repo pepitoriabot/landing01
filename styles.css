@@ -189,6 +189,15 @@ h1, h2, h3, h4, h5, h6 {
     letter-spacing: 0.05em;
 }
 
+.logo-img {
+    height: 50px;
+    width: auto;
+}
+
+.navbar.scrolled .logo-img {
+    height: 40px;
+}
+
 .nav-menu {
     display: flex;
     align-items: center;
@@ -236,7 +245,7 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
     justify-content: center;
     background: linear-gradient(135deg, var(--color-darker) 0%, var(--color-gray) 100%);
-    background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1920&q=80');
+    background-image: url('https://lacolmenacf.es/wp-content/uploads/2017/12/DSC_0498.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -720,6 +729,222 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--color-primary);
 }
 
+/* Section Intro */
+.section-intro {
+    text-align: center;
+    color: var(--color-text-muted);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: -1.5rem auto 3rem;
+}
+
+/* Activities Grid */
+.activities-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.activity {
+    background: var(--color-gray);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    transition: var(--transition);
+    position: relative;
+}
+
+.activity:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.activity.featured {
+    background: linear-gradient(135deg, var(--color-gray) 0%, rgba(255, 184, 0, 0.1) 100%);
+    border: 2px solid var(--color-primary);
+}
+
+.activity-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-primary);
+    color: var(--color-dark);
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+.activity-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.activity h3 {
+    color: var(--color-primary);
+    margin-bottom: 0.75rem;
+    font-size: 1.3rem;
+}
+
+.activity p {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Schedule Grid */
+.schedule-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.schedule-card {
+    background: var(--color-gray);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    text-align: center;
+}
+
+.schedule-card h3 {
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+}
+
+.schedule-times {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.time-slot {
+    background: var(--color-darker);
+    padding: 1rem;
+    border-radius: var(--border-radius);
+}
+
+.time-slot.single {
+    padding: 1.5rem;
+}
+
+.time-range {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-white);
+    margin-bottom: 0.25rem;
+}
+
+.time-label {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.schedule-cta {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+/* Locations Grid */
+.locations-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.location-card {
+    background: var(--color-gray);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.location-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.location-card.main {
+    border: 2px solid var(--color-primary);
+}
+
+.location-card-header {
+    background: var(--color-darker);
+    padding: 1.5rem 2rem;
+    position: relative;
+}
+
+.location-badge {
+    display: inline-block;
+    background: var(--color-primary);
+    color: var(--color-dark);
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+}
+
+.location-card-header h3 {
+    color: var(--color-white);
+    margin: 0;
+    font-size: 1.4rem;
+}
+
+.location-card-body {
+    padding: 2rem;
+}
+
+.location-size {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+}
+
+.location-address,
+.location-distance {
+    color: var(--color-text-muted);
+    margin-bottom: 1.5rem;
+}
+
+.location-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.location-features li {
+    background: var(--color-darker);
+    color: var(--color-text);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+/* Footer Logo */
+.footer-logo {
+    height: 60px;
+    width: auto;
+    margin-bottom: 0.5rem;
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
     .two-columns {
@@ -741,6 +966,18 @@ h1, h2, h3, h4, h5, h6 {
     
     .location-map {
         order: -1;
+    }
+    
+    .activities-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .schedule-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .locations-grid {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -786,6 +1023,10 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .activities-grid {
         grid-template-columns: 1fr;
     }
     
