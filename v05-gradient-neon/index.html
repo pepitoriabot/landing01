@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Colmena CrossFit · Tu Box en Sevilla</title>
+    <meta name="description" content="La Colmena CrossFit - Tu box de CrossFit en Sevilla. Más de 1000m² de instalaciones. Un lugar para tod@s.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --neon-blue: #00D4FF;
+            --neon-purple: #A855F7;
+            --neon-pink: #EC4899;
+            --neon-green: #10B981;
+            --gradient: linear-gradient(135deg, var(--neon-blue), var(--neon-purple), var(--neon-pink));
+            --gradient-h: linear-gradient(90deg, var(--neon-blue), var(--neon-purple), var(--neon-pink));
+            --bg-dark: #0B0B1A;
+            --bg-card: rgba(255, 255, 255, 0.04);
+            --bg-glass: rgba(255, 255, 255, 0.06);
+            --border-glass: rgba(255, 255, 255, 0.1);
+            --text: #E8E8F0;
+            --text-dim: #9898B0;
+            --heading: 'Outfit', -apple-system, sans-serif;
+            --body: 'Space Grotesk', -apple-system, sans-serif;
+            --radius: 20px;
+            --radius-sm: 12px;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--body);
+            background: var(--bg-dark);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-dark); }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--neon-blue), var(--neon-purple));
+            border-radius: 3px;
+        }
+
+        /* ── Utility ── */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .gradient-text {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--body);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--neon-blue);
+            margin-bottom: 16px;
+            padding: 6px 16px;
+            background: rgba(0, 212, 255, 0.08);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 50px;
+            width: fit-content;
+        }
+        .section-tag::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--neon-blue);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--neon-blue);
+        }
+        .section-title {
+            font-family: var(--heading);
+            font-size: clamp(2.2rem, 5vw, 3.4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+        .section-desc {
+            color: var(--text-dim);
+            font-size: 1.05rem;
+            max-width: 580px;
+            line-height: 1.7;
+        }
+
+        /* ── Glass ── */
+        .glass {
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius);
+        }
+        .glass-sm { border-radius: var(--radius-sm); }
+
+        /* ── Glow ── */
+        .glow-blue { box-shadow: 0 0 40px rgba(0, 212, 255, 0.15); }
+        .glow-purple { box-shadow: 0 0 40px rgba(168, 85, 247, 0.15); }
+        .glow-pink { box-shadow: 0 0 40px rgba(236, 72, 153, 0.15); }
+
+        /* ── Buttons ── */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            font-family: var(--body);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-neon {
+            background: var(--gradient);
+            color: #fff;
+        }
+        .btn-neon:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 212, 255, 0.3), 0 8px 30px rgba(168, 85, 247, 0.2);
+        }
+        .btn-glass {
+            background: var(--bg-glass);
+            color: var(--text);
+            border: 1px solid var(--border-glass);
+            backdrop-filter: blur(10px);
+        }
+        .btn-glass:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+            border-color: rgba(0, 212, 255, 0.3);
+        }
+
+        /* ── Animations ── */
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        @keyframes pulse-glow { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        /* ── BG Orbs ── */
+        .bg-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ── Nav ── */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 16px 0;
+            transition: all 0.4s ease;
+        }
+        .nav.scrolled {
+            background: rgba(11, 11, 26, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-glass);
+            padding: 10px 0;
+        }
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-logo img {
+            height: 46px;
+            width: auto;
+            transition: height 0.3s ease;
+        }
+        .nav.scrolled .nav-logo img { height: 36px; }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.82rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--neon-blue); }
+        .nav-cta {
+            padding: 9px 22px !important;
+            background: var(--gradient) !important;
+            color: #fff !important;
+            border-radius: 50px;
+            font-weight: 600 !important;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .nav-cta:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--neon-blue);
+            transition: all 0.3s;
+            border-radius: 2px;
+        }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        /* ── Hero ── */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://lacolmenacf.es/wp-content/uploads/2024/03/FER00019-scaled.jpg') center/cover no-repeat;
+        }
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(11,11,26,0.95) 0%, rgba(11,11,26,0.75) 40%, rgba(11,11,26,0.9) 100%);
+        }
+        .hero-orb1 {
+            width: 500px; height: 500px;
+            background: rgba(0, 212, 255, 0.12);
+            top: -100px; right: -100px;
+            animation: float 8s ease-in-out infinite;
+        }
+        .hero-orb2 {
+            width: 400px; height: 400px;
+            background: rgba(168, 85, 247, 0.1);
+            bottom: -50px; left: 10%;
+            animation: float 10s ease-in-out infinite reverse;
+        }
+        .hero-orb3 {
+            width: 250px; height: 250px;
+            background: rgba(236, 72, 153, 0.08);
+            top: 40%; right: 20%;
+            animation: float 7s ease-in-out infinite 2s;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 720px;
+            padding: 120px 0 80px;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--neon-blue);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 28px;
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+        .hero-badge::before {
+            content: '';
+            width: 8px; height: 8px;
+            background: var(--neon-blue);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue);
+        }
+        .hero-title {
+            font-family: var(--heading);
+            font-size: clamp(3.2rem, 9vw, 6rem);
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 8px;
+            letter-spacing: -2px;
+        }
+        .hero-title .gradient-text {
+            background: linear-gradient(135deg, var(--neon-blue) 0%, var(--neon-purple) 40%, var(--neon-pink) 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-shift 4s ease infinite;
+        }
+        .hero-subtitle {
+            font-family: var(--heading);
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-weight: 600;
+            color: var(--text-dim);
+            margin-bottom: 24px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+        .hero-desc {
+            font-size: 1.1rem;
+            color: var(--text-dim);
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+        .hero-btns {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+        .hero-stats {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+        .hero-stat {
+            padding: 16px 24px;
+            background: var(--bg-glass);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-sm);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            min-width: 130px;
+        }
+        .hero-stat-value {
+            font-family: var(--heading);
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-stat-label {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+
+        /* ── Ring decoration ── */
+        .hero-ring {
+            position: absolute;
+            right: -5%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 450px;
+            height: 450px;
+            z-index: 1;
+            pointer-events: none;
+        }
+        .hero-ring::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            border-top-color: var(--neon-blue);
+            border-right-color: var(--neon-purple);
+            animation: rotate 12s linear infinite;
+            opacity: 0.3;
+        }
+        .hero-ring::after {
+            content: '';
+            position: absolute;
+            inset: 40px;
+            border-radius: 50%;
+            border: 1px solid transparent;
+            border-bottom-color: var(--neon-pink);
+            border-left-color: var(--neon-blue);
+            animation: rotate 8s linear infinite reverse;
+            opacity: 0.2;
+        }
+
+        /* ── Activities ── */
+        .activities {
+            padding: 120px 0;
+            position: relative;
+        }
+        .activities-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+        .activities-header .section-tag { margin: 0 auto 16px; }
+        .activities-header .section-desc { margin: 0 auto; }
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .activity-card {
+            padding: 36px 28px;
+            background: var(--bg-glass);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+        .activity-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-h);
+            background-size: 200% 100%;
+            opacity: 0;
+            transition: opacity 0.4s;
+            border-radius: var(--radius) var(--radius) 0 0;
+        }
+        .activity-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(0, 212, 255, 0.25);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 212, 255, 0.08);
+        }
+        .activity-card:hover::before { opacity: 1; animation: gradient-shift 2s ease infinite; }
+        .activity-card.featured {
+            border-color: rgba(168, 85, 247, 0.4);
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.08), rgba(236, 72, 153, 0.05));
+        }
+        .activity-card.featured::before { opacity: 1; animation: gradient-shift 3s ease infinite; }
+        .activity-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: var(--gradient);
+            color: #fff;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            padding: 4px 14px;
+            border-radius: 50px;
+            text-transform: uppercase;
+        }
+        .activity-icon {
+            font-size: 2rem;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 56px;
+            height: 56px;
+            background: rgba(0, 212, 255, 0.08);
+            border: 1px solid rgba(0, 212, 255, 0.15);
+            border-radius: 14px;
+        }
+        .activity-name {
+            font-family: var(--heading);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .activity-desc {
+            color: var(--text-dim);
+            font-size: 0.92rem;
+            line-height: 1.7;
+        }
+
+        /* ── Philosophy ── */
+        .philosophy {
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .philosophy-orb {
+            width: 600px; height: 600px;
+            background: rgba(168, 85, 247, 0.06);
+            top: -200px; left: -200px;
+        }
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        .philosophy-quote {
+            font-family: var(--heading);
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            font-weight: 700;
+            line-height: 1.4;
+            padding: 40px;
+            background: var(--bg-glass);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius);
+            backdrop-filter: blur(10px);
+            position: relative;
+            margin-top: 32px;
+        }
+        .philosophy-quote::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-h);
+            border-radius: var(--radius) var(--radius) 0 0;
+        }
+        .philosophy-mission h3,
+        .philosophy-vision h3 {
+            font-family: var(--heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .philosophy-mission p,
+        .philosophy-vision p {
+            color: var(--text-dim);
+            line-height: 1.8;
+        }
+        .philosophy-vision { margin-top: 36px; }
+
+        /* ── Schedule ── */
+        .schedule {
+            padding: 120px 0;
+            position: relative;
+        }
+        .schedule-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+        .schedule-card {
+            padding: 40px;
+            background: var(--bg-glass);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius);
+            backdrop-filter: blur(10px);
+        }
+        .schedule-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .schedule-row:last-child { border-bottom: none; }
+        .schedule-day {
+            font-family: var(--heading);
+            font-weight: 700;
+            font-size: 1rem;
+        }
+        .schedule-time {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            text-align: right;
+        }
+        .schedule-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: 50px;
+            transition: all 0.3s;
+            margin-top: 28px;
+        }
+        .schedule-whatsapp:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.3);
+        }
+
+        /* ── Facilities ── */
+        .facilities {
+            padding: 120px 0;
+            position: relative;
+        }
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 48px;
+        }
+        .facility-card {
+            padding: 40px;
+            background: var(--bg-glass);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s;
+        }
+        .facility-card:hover {
+            border-color: rgba(0, 212, 255, 0.25);
+        }
+        .facility-card.main-facility {
+            border-color: rgba(0, 212, 255, 0.3);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.08);
+        }
+        .facility-card.main-facility::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-h);
+        }
+        .facility-name {
+            font-family: var(--heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .facility-size {
+            font-family: var(--heading);
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .facility-address {
+            color: var(--text-dim);
+            margin-bottom: 20px;
+        }
+        .facility-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .facility-tag {
+            padding: 6px 14px;
+            background: rgba(0, 212, 255, 0.08);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--neon-blue);
+        }
+
+        /* ── Benefits ── */
+        .benefits {
+            padding: 120px 0;
+            position: relative;
+        }
+        .benefits-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+        .benefits-header .section-tag { margin: 0 auto 16px; }
+        .benefits-header .section-desc { margin: 0 auto; }
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .benefit-card {
+            text-align: center;
+            padding: 40px 20px;
+            background: var(--bg-glass);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s;
+        }
+        .benefit-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(168, 85, 247, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 20px rgba(168, 85, 247, 0.08);
+        }
+        .benefit-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(168, 85, 247, 0.1));
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 16px;
+            font-size: 1.5rem;
+        }
+        .benefit-name {
+            font-family: var(--heading);
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .benefit-desc {
+            color: var(--text-dim);
+            font-size: 0.88rem;
+            line-height: 1.6;
+        }
+
+        /* ── Location ── */
+        .location {
+            padding: 120px 0;
+            position: relative;
+        }
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 48px;
+        }
+        .location-map {
+            width: 100%;
+            height: 400px;
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius);
+            filter: contrast(1.1) brightness(0.8) saturate(0.8);
+        }
+        .location-info { display: flex; flex-direction: column; justify-content: center; }
+        .location-item {
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .location-item-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 212, 255, 0.08);
+            border: 1px solid rgba(0, 212, 255, 0.15);
+            border-radius: 10px;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+        .location-item a {
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .location-item a:hover { color: var(--neon-blue); }
+        .location-socials {
+            display: flex;
+            gap: 12px;
+            margin-top: 28px;
+        }
+        .location-social {
+            width: 48px;
+            height: 48px;
+            background: var(--bg-glass);
+            border: 1px solid var(--border-glass);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--text);
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+        .location-social:hover {
+            border-color: rgba(0, 212, 255, 0.4);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        /* ── CTA Section ── */
+        .cta-section {
+            padding: 120px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-orb1 {
+            width: 400px; height: 400px;
+            background: rgba(0, 212, 255, 0.08);
+            top: -100px; left: -100px;
+        }
+        .cta-orb2 {
+            width: 350px; height: 350px;
+            background: rgba(236, 72, 153, 0.06);
+            bottom: -100px; right: -100px;
+        }
+        .cta-section .section-tag { margin: 0 auto 16px; }
+        .cta-section .section-title {
+            font-size: clamp(2.5rem, 6vw, 4.2rem);
+        }
+        .cta-section .section-desc {
+            margin: 0 auto 48px;
+            font-size: 1.2rem;
+        }
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
+        }
+        .cta-phone {
+            color: var(--text-dim);
+            font-size: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+        .cta-phone a {
+            color: var(--neon-blue);
+            text-decoration: none;
+        }
+
+        /* ── Footer ── */
+        .footer {
+            padding: 48px 0 36px;
+            border-top: 1px solid var(--border-glass);
+        }
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+        .footer-logo img { height: 34px; opacity: 0.6; }
+        .footer-center {
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+        }
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+        .footer-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover { color: var(--neon-blue); }
+        .footer-socials {
+            display: flex;
+            gap: 12px;
+            margin-top: 8px;
+            justify-content: center;
+        }
+        .footer-socials a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+        .footer-socials a:hover { color: var(--neon-blue); }
+
+        /* ── Mobile Menu ── */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(11, 11, 26, 0.98);
+            backdrop-filter: blur(30px);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 28px;
+        }
+        .mobile-menu.active { display: flex; }
+        .mobile-menu a {
+            color: var(--text);
+            text-decoration: none;
+            font-family: var(--heading);
+            font-size: 1.5rem;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        .mobile-menu a:hover { color: var(--neon-blue); }
+
+        /* ── Responsive ── */
+        @media (max-width: 1024px) {
+            .activities-grid { grid-template-columns: repeat(2, 1fr); }
+            .benefits-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero-ring { display: none; }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .activities-grid { grid-template-columns: 1fr; }
+            .philosophy-grid { grid-template-columns: 1fr; gap: 40px; }
+            .schedule-inner { grid-template-columns: 1fr; gap: 40px; }
+            .facilities-grid { grid-template-columns: 1fr; }
+            .benefits-grid { grid-template-columns: 1fr; }
+            .location-grid { grid-template-columns: 1fr; }
+            .footer-inner { flex-direction: column; text-align: center; }
+            .footer-links { flex-wrap: wrap; justify-content: center; }
+            .hero-stats { gap: 12px; }
+            .hero-stat { min-width: 100px; padding: 12px 16px; }
+            .hero-btns { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav" id="nav">
+    <div class="container nav-inner">
+        <a href="#" class="nav-logo">
+            <img src="https://lacolmenacf.es/wp-content/uploads/2024/03/LOGO-POWER-BRERO.png" alt="La Colmena CrossFit">
+        </a>
+        <ul class="nav-links">
+            <li><a href="#actividades">Actividades</a></li>
+            <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="#horarios">Horarios</a></li>
+            <li><a href="#ubicacion">Ubicación</a></li>
+            <li><a href="#contacto" class="nav-cta">Contacta</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Menú">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+    <a href="#actividades" onclick="closeMobile()">Actividades</a>
+    <a href="#nosotros" onclick="closeMobile()">Nosotros</a>
+    <a href="#horarios" onclick="closeMobile()">Horarios</a>
+    <a href="#ubicacion" onclick="closeMobile()">Ubicación</a>
+    <a href="#contacto" class="btn btn-neon" onclick="closeMobile()">Contacta</a>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+    <div class="hero-bg"></div>
+    <div class="bg-orb hero-orb1"></div>
+    <div class="bg-orb hero-orb2"></div>
+    <div class="bg-orb hero-orb3"></div>
+    <div class="hero-ring"></div>
+    <div class="container hero-content">
+        <div class="hero-badge">🐝 CrossFit en Sevilla</div>
+        <h1 class="hero-title">
+            <span class="gradient-text">LA COLMENA</span><br>
+            <span style="color: var(--text);">CROSSFIT</span>
+        </h1>
+        <p class="hero-subtitle">Un lugar para tod@s</p>
+        <p class="hero-desc">Tu box de CrossFit en Sevilla. Más de 1000m² de instalaciones dedicadas a que alcances tu mejor versión.</p>
+        <div class="hero-btns">
+            <a href="#contacto" class="btn btn-neon">⚡ Prueba Gratis</a>
+            <a href="#actividades" class="btn btn-glass">Nuestras Actividades →</a>
+        </div>
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <div class="hero-stat-value">4.9 ★</div>
+                <div class="hero-stat-label">Google Reviews</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-value">1000m²</div>
+                <div class="hero-stat-label">Instalaciones</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-value">6</div>
+                <div class="hero-stat-label">Actividades</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ ACTIVITIES ═══ -->
+<section class="activities" id="actividades">
+    <div class="container">
+        <div class="activities-header">
+            <div class="section-tag">Actividades</div>
+            <h2 class="section-title">Lo que <span class="gradient-text">ofrecemos</span></h2>
+            <p class="section-desc">Seis disciplinas diseñadas para que encuentres la que mejor se adapta a ti.</p>
+        </div>
+        <div class="activities-grid">
+            <div class="activity-card">
+                <div class="activity-icon">🏋️</div>
+                <h3 class="activity-name">CrossFit</h3>
+                <p class="activity-desc">Entrenamiento funcional de alta intensidad constantemente variado. La base de todo lo que hacemos.</p>
+            </div>
+            <div class="activity-card featured">
+                <span class="activity-badge">Recomendado</span>
+                <div class="activity-icon" style="background: rgba(168,85,247,0.1); border-color: rgba(168,85,247,0.2);">🎯</div>
+                <h3 class="activity-name">On Ramp</h3>
+                <p class="activity-desc">Nuestra actividad estrella para no iniciados. El primer paso perfecto para comenzar tu camino.</p>
+            </div>
+            <div class="activity-card">
+                <div class="activity-icon">🏅</div>
+                <h3 class="activity-name">Athlete</h3>
+                <p class="activity-desc">Orientadas a la competición. Para quienes quieren llevar su rendimiento al siguiente nivel.</p>
+            </div>
+            <div class="activity-card">
+                <div class="activity-icon">🏆</div>
+                <h3 class="activity-name">Halterofilia</h3>
+                <p class="activity-desc">Técnica y fuerza con movimientos olímpicos. Domina el snatch y el clean & jerk.</p>
+            </div>
+            <div class="activity-card">
+                <div class="activity-icon" style="background: rgba(236,72,153,0.08); border-color: rgba(236,72,153,0.2);">🔥</div>
+                <h3 class="activity-name">Hyrox</h3>
+                <p class="activity-desc">Prepárate para competiciones de fitness. Entrenamiento disponible en nuestro segundo local.</p>
+            </div>
+            <div class="activity-card">
+                <div class="activity-icon">🏃</div>
+                <h3 class="activity-name">Running</h3>
+                <p class="activity-desc">Mejora tu técnica y resistencia. Sesiones guiadas para corredores de todos los niveles.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ PHILOSOPHY ═══ -->
+<section class="philosophy" id="nosotros">
+    <div class="bg-orb philosophy-orb"></div>
+    <div class="container">
+        <div class="philosophy-grid">
+            <div>
+                <div class="section-tag">Nosotros</div>
+                <h2 class="section-title">Más que un <span class="gradient-text">gimnasio</span></h2>
+                <div class="philosophy-mission">
+                    <h3>Misión</h3>
+                    <p>Entregarte herramientas para mantenerte en forma y saludable. Te acompañamos en cada paso del camino, adaptándonos a tu nivel y objetivos para que consigas resultados reales.</p>
+                </div>
+                <div class="philosophy-vision">
+                    <h3>Visión</h3>
+                    <p>Creemos en un mañana con gente alegre, motivada y comprometida con su bienestar. Una comunidad que se apoya mutuamente y celebra cada logro.</p>
+                </div>
+            </div>
+            <div>
+                <blockquote class="philosophy-quote">
+                    "No importa tu nivel, nuestro box es <span class="gradient-text">#unlugarparatodos</span>"
+                </blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ SCHEDULE ═══ -->
+<section class="schedule" id="horarios">
+    <div class="container">
+        <div class="schedule-inner">
+            <div>
+                <div class="section-tag">Horarios</div>
+                <h2 class="section-title">Encuentra tu <span class="gradient-text">hora</span></h2>
+                <p class="section-desc">Amplia disponibilidad horaria para que siempre encuentres un hueco que se adapte a tu rutina.</p>
+            </div>
+            <div>
+                <div class="schedule-card">
+                    <div class="schedule-row">
+                        <span class="schedule-day">Lunes — Jueves</span>
+                        <span class="schedule-time">6:45 – 12:00 / 16:00 – 22:00</span>
+                    </div>
+                    <div class="schedule-row">
+                        <span class="schedule-day">Viernes</span>
+                        <span class="schedule-time">6:45 – 12:00 / 16:00 – 21:00</span>
+                    </div>
+                    <div class="schedule-row">
+                        <span class="schedule-day">Sábado</span>
+                        <span class="schedule-time">8:30 – 13:30</span>
+                    </div>
+                    <div class="schedule-row">
+                        <span class="schedule-day">Domingo</span>
+                        <span class="schedule-time">Descanso</span>
+                    </div>
+                </div>
+                <a href="https://wa.me/+34604812862?text=Hola!%20Me%20gustaría%20conocer%20los%20horarios" class="schedule-whatsapp" target="_blank" rel="noopener">
+                    📲 Consulta por WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ FACILITIES ═══ -->
+<section class="facilities" id="instalaciones">
+    <div class="container">
+        <div class="section-tag">Instalaciones</div>
+        <h2 class="section-title">Dos <span class="gradient-text">espacios</span>, una comunidad</h2>
+        <div class="facilities-grid">
+            <div class="facility-card main-facility">
+                <div class="facility-name">La Colmena CrossFit</div>
+                <div class="facility-size">1000m²</div>
+                <p class="facility-address">C/ Destornillador 15, 41008 Sevilla</p>
+                <div class="facility-tags">
+                    <span class="facility-tag">CrossFit</span>
+                    <span class="facility-tag">On Ramp</span>
+                    <span class="facility-tag">Athlete</span>
+                    <span class="facility-tag">Halterofilia</span>
+                    <span class="facility-tag">Hyrox</span>
+                </div>
+            </div>
+            <div class="facility-card">
+                <div class="facility-name">La Colmena Training Center</div>
+                <div class="facility-size">A 700m</div>
+                <p class="facility-address">Segundo local dedicado a entrenamientos específicos</p>
+                <div class="facility-tags">
+                    <span class="facility-tag">Hyrox</span>
+                    <span class="facility-tag">Running</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ BENEFITS ═══ -->
+<section class="benefits" id="beneficios">
+    <div class="container">
+        <div class="benefits-header">
+            <div class="section-tag">¿Por qué nosotros?</div>
+            <h2 class="section-title">La diferencia <span class="gradient-text">La Colmena</span></h2>
+            <p class="section-desc">Lo que nos hace únicos no es solo nuestro espacio, sino nuestra forma de entender el entrenamiento.</p>
+        </div>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon">👨‍🏫</div>
+                <h3 class="benefit-name">Profesionales de primer nivel</h3>
+                <p class="benefit-desc">Coaches certificados con años de experiencia en entrenamiento funcional.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">🤝</div>
+                <h3 class="benefit-name">Ambiente familiar</h3>
+                <p class="benefit-desc">Una comunidad donde te sentirás como en casa desde el primer día.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">📊</div>
+                <h3 class="benefit-name">Adaptado a tu nivel</h3>
+                <p class="benefit-desc">Cada ejercicio se escala a tus capacidades. Todos empezamos desde algún punto.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">🎯</div>
+                <h3 class="benefit-name">Variedad de actividades</h3>
+                <p class="benefit-desc">6 disciplinas diferentes para que nunca te aburras y siempre progreses.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ LOCATION ═══ -->
+<section class="location" id="ubicacion">
+    <div class="container">
+        <div class="section-tag">Ubicación</div>
+        <h2 class="section-title">Dónde <span class="gradient-text">encontrarnos</span></h2>
+        <div class="location-grid">
+            <iframe class="location-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3170.8!2d-5.9597449!3d37.4143714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd126938293b1ed5%3A0xcb579ee9c33067ae!2sLa%20Colmena%20CrossFit!5e0!3m2!1ses!2ses" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ubicación La Colmena CrossFit"></iframe>
+            <div class="location-info">
+                <div class="location-item">
+                    <span class="location-item-icon">📍</span>
+                    <span>C. Destornillador 15, 41008 Sevilla</span>
+                </div>
+                <div class="location-item">
+                    <span class="location-item-icon">📞</span>
+                    <a href="tel:+34604812862">604 81 28 62</a>
+                </div>
+                <div class="location-item">
+                    <span class="location-item-icon">📲</span>
+                    <a href="https://wa.me/+34604812862" target="_blank" rel="noopener">WhatsApp</a>
+                </div>
+                <div class="location-socials">
+                    <a href="https://www.instagram.com/lacolmenacrossfitsevilla/" target="_blank" rel="noopener" class="location-social" title="Instagram">📷</a>
+                    <a href="https://www.facebook.com/LaColmenaCrossFit" target="_blank" rel="noopener" class="location-social" title="Facebook">👤</a>
+                    <a href="https://wa.me/+34604812862" target="_blank" rel="noopener" class="location-social" title="WhatsApp">💬</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="cta-section" id="contacto">
+    <div class="bg-orb cta-orb1"></div>
+    <div class="bg-orb cta-orb2"></div>
+    <div class="container">
+        <div class="section-tag">Empieza hoy</div>
+        <h2 class="section-title">¿Listo para <span class="gradient-text">empezar</span>?</h2>
+        <p class="section-desc">Tu primera clase es GRATIS. Sin compromiso. Ven, prueba y decide.</p>
+        <div class="cta-buttons">
+            <a href="https://wa.me/+34604812862?text=Hola!%20Me%20gustaría%20probar%20una%20clase%20gratis" class="btn btn-neon" target="_blank" rel="noopener">📲 WhatsApp</a>
+            <a href="tel:+34604812862" class="btn btn-glass">📞 Llámanos</a>
+        </div>
+        <p class="cta-phone">O llámanos al <a href="tel:+34604812862">604 81 28 62</a></p>
+    </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-inner">
+            <div class="footer-logo">
+                <img src="https://lacolmenacf.es/wp-content/uploads/2024/03/LOGO-POWER-BRERO.png" alt="La Colmena CrossFit">
+            </div>
+            <div class="footer-center">
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/lacolmenacrossfitsevilla/" target="_blank" rel="noopener" title="Instagram">📷</a>
+                    <a href="https://www.facebook.com/LaColmenaCrossFit" target="_blank" rel="noopener" title="Facebook">👤</a>
+                    <a href="https://wa.me/+34604812862" target="_blank" rel="noopener" title="WhatsApp">💬</a>
+                </div>
+                <p style="margin-top:12px;">© 2026 La Colmena Training Center S.L. Todos los derechos reservados.</p>
+            </div>
+            <div class="footer-links">
+                <a href="aviso-legal.html">Aviso Legal</a>
+                <a href="politica-privacidad.html">Privacidad</a>
+                <a href="politica-cookies.html">Cookies</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Nav scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+        nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Mobile menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    });
+    function closeMobile() {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // Scroll animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.activity-card, .benefit-card, .facility-card, .philosophy-grid > div, .schedule-inner > div, .location-grid > *, .schedule-card').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+    });
+</script>
+</body>
+</html>

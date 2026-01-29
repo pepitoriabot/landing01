@@ -1,0 +1,1538 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Colmena CrossFit · Tu Box en Sevilla</title>
+    <meta name="description" content="La Colmena CrossFit, tu box de CrossFit en Sevilla. Más de 1000m² de instalaciones. Un lugar para tod@s.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --red: #C41E2A;
+            --red-dark: #9B1520;
+            --red-light: #E83B47;
+            --navy: #1B2A4A;
+            --navy-dark: #0F1B33;
+            --navy-light: #2C3F66;
+            --cream: #F5F0E8;
+            --cream-dark: #E8DFD0;
+            --cream-light: #FAF8F3;
+            --gold: #C8A84E;
+            --gold-light: #DCC06A;
+            --white: #FFFFFF;
+            --text: #1B2A4A;
+            --text-light: #5A6580;
+            --shadow: 0 4px 20px rgba(27, 42, 74, 0.12);
+            --shadow-lg: 0 8px 40px rgba(27, 42, 74, 0.18);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Barlow', sans-serif;
+            color: var(--text);
+            background: var(--cream);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* ========== STRIPE PATTERNS ========== */
+        .stripe-accent {
+            position: absolute;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ========== NAV ========== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: var(--navy);
+            border-bottom: 4px solid var(--red);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .nav.scrolled { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 70px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .nav-logo img { height: 46px; width: auto; filter: brightness(0) invert(1); }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.8);
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 8px 16px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 16px;
+            right: 16px;
+            height: 2px;
+            background: var(--red);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-links a:hover { color: var(--white); }
+        .nav-links a:hover::after { transform: scaleX(1); }
+
+        .nav-links .cta-btn {
+            background: var(--red);
+            color: var(--white) !important;
+            padding: 10px 24px;
+            border: 2px solid var(--red);
+            font-weight: 800;
+            margin-left: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links .cta-btn::after { display: none; }
+
+        .nav-links .cta-btn:hover {
+            background: var(--red-light);
+            border-color: var(--red-light);
+            transform: translateY(-1px);
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .nav-toggle span {
+            width: 26px;
+            height: 3px;
+            background: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: var(--navy-dark);
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://lacolmenacf.es/wp-content/uploads/2024/03/FER00019-scaled.jpg') center/cover no-repeat;
+        }
+
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg,
+                rgba(27, 42, 74, 0.88) 0%,
+                rgba(15, 27, 51, 0.75) 60%,
+                rgba(196, 30, 42, 0.35) 100%);
+        }
+
+        /* Retro diagonal stripes overlay */
+        .hero-stripes {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            opacity: 0.06;
+            background: repeating-linear-gradient(
+                -45deg,
+                transparent,
+                transparent 20px,
+                rgba(255, 255, 255, 0.5) 20px,
+                rgba(255, 255, 255, 0.5) 22px
+            );
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 120px 0 80px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            border: 3px solid var(--gold);
+            color: var(--gold);
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 800;
+            font-size: 0.85rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            padding: 8px 28px;
+            margin-bottom: 24px;
+            position: relative;
+        }
+
+        .hero-badge::before,
+        .hero-badge::after {
+            content: '★';
+            margin: 0 8px;
+        }
+
+        .hero h1 {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(4rem, 10vw, 8rem);
+            color: var(--white);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            line-height: 0.95;
+            margin-bottom: 8px;
+            text-shadow: 4px 4px 0 rgba(196, 30, 42, 0.4);
+        }
+
+        .hero-subtitle {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            color: var(--red-light);
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .hero-desc {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.75);
+            max-width: 550px;
+            margin: 0 auto 36px;
+            line-height: 1.7;
+        }
+
+        .hero-divider {
+            width: 80px;
+            height: 4px;
+            background: var(--red);
+            margin: 0 auto 32px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 56px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 36px;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 800;
+            font-size: 1.05rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-red {
+            background: var(--red);
+            color: var(--white);
+            box-shadow: 0 4px 0 var(--red-dark), 0 6px 20px rgba(196, 30, 42, 0.4);
+        }
+
+        .btn-red:hover {
+            background: var(--red-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 0 var(--red-dark), 0 8px 28px rgba(196, 30, 42, 0.5);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 3px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--white);
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .btn-navy {
+            background: var(--navy);
+            color: var(--white);
+            box-shadow: 0 4px 0 var(--navy-dark), 0 6px 20px rgba(27, 42, 74, 0.3);
+        }
+
+        .btn-navy:hover {
+            background: var(--navy-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 0 var(--navy-dark), 0 8px 28px rgba(27, 42, 74, 0.4);
+        }
+
+        .btn-white {
+            background: var(--white);
+            color: var(--red);
+            box-shadow: 0 4px 0 var(--cream-dark), 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-white:hover {
+            background: var(--cream);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-red {
+            background: transparent;
+            color: var(--white);
+            border: 3px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .btn-outline-red:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+        }
+
+        .hero-stat {
+            padding: 0 36px;
+            text-align: center;
+            border-right: 2px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .hero-stat:last-child { border-right: none; }
+
+        .hero-stat-value {
+            font-family: 'Anton', sans-serif;
+            font-size: 2rem;
+            color: var(--white);
+            letter-spacing: 2px;
+        }
+
+        .hero-stat-label {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* ========== SECTIONS ========== */
+        .section { padding: 100px 0; position: relative; }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-label {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 800;
+            font-size: 0.85rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--red);
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            color: var(--navy);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .section-rule {
+            width: 60px;
+            height: 4px;
+            background: var(--red);
+            margin: 16px auto 16px;
+        }
+
+        .section-desc {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        /* ========== ACTIVITIES ========== */
+        .activities { background: var(--cream); }
+
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .activity-card {
+            background: var(--white);
+            border: 3px solid transparent;
+            padding: 32px 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .activity-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: repeating-linear-gradient(
+                90deg,
+                var(--red) 0px,
+                var(--red) 8px,
+                var(--navy) 8px,
+                var(--navy) 16px
+            );
+        }
+
+        .activity-card:hover {
+            border-color: var(--navy);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .activity-card.featured {
+            background: var(--navy);
+            border-color: var(--gold);
+            color: var(--white);
+        }
+
+        .activity-card.featured::before {
+            background: repeating-linear-gradient(
+                90deg,
+                var(--gold) 0px,
+                var(--gold) 8px,
+                var(--red) 8px,
+                var(--red) 16px
+            );
+        }
+
+        .activity-card.featured .activity-name { color: var(--white); }
+        .activity-card.featured .activity-desc { color: rgba(255, 255, 255, 0.75); }
+
+        .activity-badge {
+            display: inline-block;
+            background: var(--red);
+            color: var(--white);
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 4px 16px;
+            margin-bottom: 16px;
+        }
+
+        .activity-stamp {
+            width: 70px;
+            height: 70px;
+            border: 3px solid var(--navy);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 16px;
+            position: relative;
+        }
+
+        .activity-card.featured .activity-stamp {
+            border-color: var(--gold);
+        }
+
+        .activity-name {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.6rem;
+            color: var(--navy);
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .activity-desc {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* ========== PHILOSOPHY ========== */
+        .philosophy {
+            background: var(--navy);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .philosophy::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 0.04;
+            background: repeating-linear-gradient(
+                -45deg,
+                transparent,
+                transparent 30px,
+                rgba(255, 255, 255, 0.5) 30px,
+                rgba(255, 255, 255, 0.5) 32px
+            );
+            pointer-events: none;
+        }
+
+        .philosophy .section-title { color: var(--white); }
+        .philosophy .section-label { color: var(--gold); }
+        .philosophy .section-rule { background: var(--gold); }
+
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .philosophy-text h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.4rem;
+            color: var(--gold);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .philosophy-text p {
+            color: rgba(255, 255, 255, 0.75);
+            margin-bottom: 24px;
+            line-height: 1.8;
+        }
+
+        .philosophy-quote {
+            position: relative;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.05);
+            border: 3px solid var(--gold);
+            padding: 48px 40px;
+            text-align: center;
+        }
+
+        .philosophy-quote::before {
+            content: '★ ★ ★';
+            display: block;
+            font-size: 1rem;
+            color: var(--gold);
+            letter-spacing: 8px;
+            margin-bottom: 20px;
+        }
+
+        .philosophy-quote blockquote {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+            color: var(--white);
+            line-height: 1.4;
+            margin-bottom: 16px;
+        }
+
+        .philosophy-quote .hashtag {
+            color: var(--red-light);
+        }
+
+        .philosophy-quote cite {
+            font-style: normal;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.9rem;
+            color: var(--gold);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        /* ========== SCHEDULE ========== */
+        .schedule { background: var(--cream); }
+
+        .schedule-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .schedule-table {
+            background: var(--white);
+            border: 3px solid var(--navy);
+            overflow: hidden;
+        }
+
+        .schedule-table-header {
+            background: var(--navy);
+            color: var(--white);
+            padding: 20px 28px;
+            text-align: center;
+        }
+
+        .schedule-table-header h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 3px;
+        }
+
+        .schedule-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 28px;
+            border-bottom: 2px solid var(--cream);
+            transition: background 0.2s ease;
+        }
+
+        .schedule-row:last-child { border-bottom: none; }
+        .schedule-row:hover { background: var(--cream-light); }
+
+        .schedule-day {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 800;
+            font-size: 1.05rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--navy);
+        }
+
+        .schedule-time {
+            color: var(--text-light);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .schedule-info { text-align: center; }
+
+        .schedule-info h3 {
+            font-family: 'Anton', sans-serif;
+            font-size: 2.2rem;
+            color: var(--navy);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .schedule-info p {
+            color: var(--text-light);
+            margin-bottom: 28px;
+            line-height: 1.7;
+        }
+
+        /* ========== FACILITIES ========== */
+        .facilities {
+            background: var(--cream-dark);
+            position: relative;
+        }
+
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+        }
+
+        .facility-card {
+            background: var(--white);
+            border: 3px solid var(--navy);
+            padding: 36px 32px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .facility-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+
+        .facility-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--navy);
+        }
+
+        .facility-card.main-facility { border-color: var(--red); }
+        .facility-card.main-facility::before { background: var(--red); }
+
+        .facility-tag {
+            display: inline-block;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 800;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 4px 16px;
+            margin-bottom: 16px;
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        .facility-card.main-facility .facility-tag { background: var(--red); }
+
+        .facility-card h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.6rem;
+            color: var(--navy);
+            letter-spacing: 2px;
+            margin-bottom: 4px;
+        }
+
+        .facility-size {
+            font-family: 'Anton', sans-serif;
+            font-size: 2.2rem;
+            color: var(--red);
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .facility-address {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+        }
+
+        .facility-activities {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .facility-activities span {
+            background: var(--cream);
+            color: var(--navy);
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 4px 12px;
+            border: 1px solid var(--navy);
+        }
+
+        /* ========== WHY US ========== */
+        .why-us { background: var(--cream); }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .why-card {
+            text-align: center;
+            padding: 36px 20px;
+            background: var(--white);
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .why-card:hover {
+            border-color: var(--red);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow);
+        }
+
+        .why-stamp {
+            width: 80px;
+            height: 80px;
+            border: 4px solid var(--navy);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            position: relative;
+        }
+
+        .why-stamp::after {
+            content: '';
+            position: absolute;
+            inset: 4px;
+            border: 2px solid var(--navy);
+            border-radius: 50%;
+        }
+
+        .why-card h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            color: var(--navy);
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .why-card p {
+            font-size: 0.88rem;
+            color: var(--text-light);
+        }
+
+        /* ========== LOCATION ========== */
+        .location { background: var(--cream-dark); }
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+        }
+
+        .location-info h3 {
+            font-family: 'Anton', sans-serif;
+            font-size: 1.8rem;
+            color: var(--navy);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 28px;
+        }
+
+        .location-detail {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .location-detail-icon {
+            width: 44px;
+            height: 44px;
+            min-width: 44px;
+            background: var(--navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: var(--white);
+        }
+
+        .location-detail-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .location-detail-text strong {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-bottom: 2px;
+        }
+
+        .location-detail-text span,
+        .location-detail-text a {
+            color: var(--text);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .location-detail-text a:hover { color: var(--red); }
+
+        .social-links {
+            display: flex;
+            gap: 10px;
+            margin-top: 24px;
+        }
+
+        .social-link {
+            width: 48px;
+            height: 48px;
+            background: var(--navy);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--red);
+            transform: translateY(-3px);
+        }
+
+        .map-wrapper {
+            border: 3px solid var(--navy);
+            overflow: hidden;
+            height: 100%;
+            min-height: 400px;
+        }
+
+        .map-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 400px;
+            border: 0;
+        }
+
+        /* ========== CTA SECTION ========== */
+        .cta-section {
+            background: var(--red);
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 0.06;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 25px,
+                rgba(255, 255, 255, 0.5) 25px,
+                rgba(255, 255, 255, 0.5) 27px
+            );
+            pointer-events: none;
+        }
+
+        .cta-stamp {
+            width: 120px;
+            height: 120px;
+            border: 4px solid var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 28px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-stamp::after {
+            content: '';
+            position: absolute;
+            inset: 6px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+        }
+
+        .cta-stamp-text {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1rem;
+            color: var(--white);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .cta-section h2 {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            color: var(--white);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section p {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 36px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section p strong {
+            color: var(--white);
+            text-decoration: underline;
+            text-decoration-thickness: 3px;
+            text-underline-offset: 4px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            background: var(--navy-dark);
+            color: rgba(255, 255, 255, 0.65);
+            padding: 60px 0 30px;
+        }
+
+        .footer-inner {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand img {
+            height: 46px;
+            margin-bottom: 16px;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-brand p { font-size: 0.9rem; line-height: 1.7; margin-bottom: 20px; }
+
+        .footer h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1rem;
+            letter-spacing: 3px;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 10px; }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.65);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover { color: var(--white); }
+
+        .footer-bottom {
+            border-top: 2px solid rgba(255, 255, 255, 0.08);
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-bottom p { font-size: 0.85rem; }
+
+        .footer-legal {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .footer-legal a {
+            color: rgba(255, 255, 255, 0.4);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.2s ease;
+        }
+
+        .footer-legal a:hover { color: var(--white); }
+
+        /* ========== MOBILE ========== */
+        @media (max-width: 1024px) {
+            .activities-grid { grid-template-columns: repeat(2, 1fr); }
+            .why-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 74px;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: var(--navy);
+                flex-direction: column;
+                padding: 24px;
+                gap: 4px;
+                overflow-y: auto;
+            }
+
+            .nav-links.open { display: flex; }
+
+            .nav-links a {
+                font-size: 1.2rem;
+                padding: 14px 20px;
+                width: 100%;
+                text-align: left;
+            }
+
+            .nav-links .cta-btn { text-align: center; margin-top: 12px; margin-left: 0; }
+            .nav-toggle { display: flex; }
+
+            .hero h1 { text-shadow: 2px 2px 0 rgba(196, 30, 42, 0.4); }
+
+            .hero-stats { gap: 0; }
+            .hero-stat { padding: 0 20px; }
+
+            .activities-grid { grid-template-columns: 1fr; }
+            .philosophy-grid { grid-template-columns: 1fr; gap: 32px; }
+            .schedule-wrapper { grid-template-columns: 1fr; }
+            .facilities-grid { grid-template-columns: 1fr; }
+            .why-grid { grid-template-columns: 1fr 1fr; }
+            .location-grid { grid-template-columns: 1fr; }
+            .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .footer-legal { justify-content: center; }
+        }
+
+        @media (max-width: 480px) {
+            .why-grid { grid-template-columns: 1fr; }
+            .hero-stat { padding: 0 14px; }
+            .hero-stat-value { font-size: 1.5rem; }
+            .hero-buttons { flex-direction: column; }
+            .hero-buttons .btn { width: 100%; justify-content: center; }
+            .cta-buttons { flex-direction: column; align-items: center; }
+            .cta-buttons .btn { width: 100%; justify-content: center; }
+        }
+
+        /* ========== ANIMATIONS ========== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav class="nav" id="navbar">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">
+                <img src="https://lacolmenacf.es/wp-content/uploads/2024/03/LOGO-POWER-BRERO.png" alt="La Colmena CrossFit" loading="lazy">
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#actividades">Actividades</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#horarios">Horarios</a></li>
+                <li><a href="#ubicacion">Ubicación</a></li>
+                <li><a href="#contacto" class="cta-btn">Contacta</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Menú">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-stripes"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">★ Sevilla · Est. CrossFit ★</div>
+                <h1>La Colmena<br>CrossFit</h1>
+                <p class="hero-subtitle">Un Lugar Para Tod@s</p>
+                <div class="hero-divider"></div>
+                <p class="hero-desc">Tu box de CrossFit en Sevilla. Más de 1000m² de instalaciones donde cada persona encuentra su sitio, sin importar su nivel.</p>
+                <div class="hero-buttons">
+                    <a href="#contacto" class="btn btn-red">★ Prueba Gratis</a>
+                    <a href="#actividades" class="btn btn-outline">Nuestras Actividades →</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <span class="hero-stat-value">4.9 ★</span>
+                        <span class="hero-stat-label">Google Reviews</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-value">1000M²</span>
+                        <span class="hero-stat-label">Instalaciones</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-value">6</span>
+                        <span class="hero-stat-label">Actividades</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACTIVITIES -->
+    <section class="section activities" id="actividades">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-label">★ Actividades ★</span>
+                <h2 class="section-title">Encuentra Tu Disciplina</h2>
+                <div class="section-rule"></div>
+                <p class="section-desc">Seis disciplinas diferentes para que elijas la que mejor se adapte a tus objetivos.</p>
+            </div>
+            <div class="activities-grid">
+                <div class="activity-card fade-in">
+                    <div class="activity-stamp">🏋️</div>
+                    <h3 class="activity-name">CrossFit</h3>
+                    <p class="activity-desc">Entrenamiento funcional de alta intensidad constantemente variado. La base de todo lo que hacemos.</p>
+                </div>
+                <div class="activity-card featured fade-in">
+                    <span class="activity-badge">★ Recomendado</span>
+                    <div class="activity-stamp">🎯</div>
+                    <h3 class="activity-name">On Ramp</h3>
+                    <p class="activity-desc">Nuestra actividad estrella para no iniciados. El primer paso perfecto para empezar tu camino.</p>
+                </div>
+                <div class="activity-card fade-in">
+                    <div class="activity-stamp">🏅</div>
+                    <h3 class="activity-name">Athlete</h3>
+                    <p class="activity-desc">Orientadas a la competición. Para quienes buscan llevar su rendimiento al siguiente nivel.</p>
+                </div>
+                <div class="activity-card fade-in">
+                    <div class="activity-stamp">🏆</div>
+                    <h3 class="activity-name">Halterofilia</h3>
+                    <p class="activity-desc">Técnica y fuerza con movimientos olímpicos. Domina la arrancada y el dos tiempos.</p>
+                </div>
+                <div class="activity-card fade-in">
+                    <div class="activity-stamp">🔥</div>
+                    <h3 class="activity-name">Hyrox</h3>
+                    <p class="activity-desc">Prepárate para competiciones de fitness. Entrenamos en nuestro segundo local especializado.</p>
+                </div>
+                <div class="activity-card fade-in">
+                    <div class="activity-stamp">🏃</div>
+                    <h3 class="activity-name">Running</h3>
+                    <p class="activity-desc">Mejora tu técnica y resistencia. Sesiones guiadas para corredores de todos los niveles.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PHILOSOPHY -->
+    <section class="section philosophy" id="nosotros">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-label">★ Nuestra Filosofía ★</span>
+                <h2 class="section-title">Más Que Un Gimnasio</h2>
+                <div class="section-rule"></div>
+            </div>
+            <div class="philosophy-grid">
+                <div class="philosophy-text fade-in">
+                    <h3>Nuestra Misión</h3>
+                    <p>Entregarte herramientas para mantenerte en forma y saludable. Creemos que el ejercicio es la base del bienestar, y queremos que cada persona encuentre su camino hacia una vida más activa y plena.</p>
+                    <h3>Nuestra Visión</h3>
+                    <p>Creemos en un mañana con gente alegre, motivada, que se cuida y cuida a los demás. Un futuro donde moverse es un acto de amor propio, no una obligación.</p>
+                </div>
+                <div class="philosophy-quote fade-in">
+                    <blockquote>"No importa tu nivel, nuestro box es <span class="hashtag">#unlugarparatodos</span>"</blockquote>
+                    <cite>— La Colmena CrossFit</cite>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SCHEDULE -->
+    <section class="section schedule" id="horarios">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-label">★ Horarios ★</span>
+                <h2 class="section-title">Entrena Cuando Quieras</h2>
+                <div class="section-rule"></div>
+                <p class="section-desc">Amplio horario para que siempre encuentres tu hueco.</p>
+            </div>
+            <div class="schedule-wrapper fade-in">
+                <div class="schedule-table">
+                    <div class="schedule-table-header">
+                        <h3>Horario Semanal</h3>
+                    </div>
+                    <div class="schedule-row">
+                        <span class="schedule-day">Lunes - Jueves</span>
+                        <span class="schedule-time">6:45 - 12:00 / 16:00 - 22:00</span>
+                    </div>
+                    <div class="schedule-row">
+                        <span class="schedule-day">Viernes</span>
+                        <span class="schedule-time">6:45 - 12:00 / 16:00 - 21:00</span>
+                    </div>
+                    <div class="schedule-row">
+                        <span class="schedule-day">Sábado</span>
+                        <span class="schedule-time">8:30 - 13:30</span>
+                    </div>
+                </div>
+                <div class="schedule-info">
+                    <h3>¿Necesitas Más Info?</h3>
+                    <p>Escríbenos por WhatsApp y te contamos todos los detalles sobre horarios, clases disponibles y precios.</p>
+                    <a href="https://wa.me/+34604812862?text=Hola!%20Me%20gustaría%20conocer%20los%20horarios" target="_blank" class="btn btn-navy">★ WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FACILITIES -->
+    <section class="section facilities" id="instalaciones">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-label">★ Instalaciones ★</span>
+                <h2 class="section-title">Dos Espacios, Una Comunidad</h2>
+                <div class="section-rule"></div>
+            </div>
+            <div class="facilities-grid fade-in">
+                <div class="facility-card main-facility">
+                    <span class="facility-tag">★ Sede Principal</span>
+                    <h3>La Colmena CrossFit</h3>
+                    <div class="facility-size">1.000M²</div>
+                    <p class="facility-address">📍 C/ Destornillador 15, 41008 Sevilla</p>
+                    <div class="facility-activities">
+                        <span>CrossFit</span>
+                        <span>On Ramp</span>
+                        <span>Athlete</span>
+                        <span>Halterofilia</span>
+                        <span>Hyrox</span>
+                    </div>
+                </div>
+                <div class="facility-card">
+                    <span class="facility-tag">Segundo Centro</span>
+                    <h3>La Colmena Training Center</h3>
+                    <div class="facility-size">A 700M</div>
+                    <p class="facility-address">📍 A solo 700 metros de la sede principal</p>
+                    <div class="facility-activities">
+                        <span>Hyrox</span>
+                        <span>Running</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY US -->
+    <section class="section why-us" id="beneficios">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-label">★ ¿Por Qué Elegirnos? ★</span>
+                <h2 class="section-title">Lo Que Nos Hace Diferentes</h2>
+                <div class="section-rule"></div>
+            </div>
+            <div class="why-grid fade-in">
+                <div class="why-card">
+                    <div class="why-stamp">🎓</div>
+                    <h3>Profesionales de Primer Nivel</h3>
+                    <p>Coaches certificados y apasionados que te guían en cada paso.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-stamp">🤝</div>
+                    <h3>Ambiente Familiar</h3>
+                    <p>Una comunidad que te acoge desde el primer día como uno más.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-stamp">📊</div>
+                    <h3>Adaptado a Tu Nivel</h3>
+                    <p>Cada ejercicio se escala a tus capacidades. Sin excusas, sin límites.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-stamp">🎯</div>
+                    <h3>Variedad de Actividades</h3>
+                    <p>6 disciplinas diferentes para que nunca te aburras.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCATION -->
+    <section class="section location" id="ubicacion">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-label">★ Ubicación ★</span>
+                <h2 class="section-title">Encuéntranos</h2>
+                <div class="section-rule"></div>
+            </div>
+            <div class="location-grid fade-in">
+                <div class="location-info">
+                    <h3>Ven a Conocernos</h3>
+                    <div class="location-detail">
+                        <div class="location-detail-icon">📍</div>
+                        <div class="location-detail-text">
+                            <strong>Dirección</strong>
+                            <span>C. Destornillador 15, 41008 Sevilla</span>
+                        </div>
+                    </div>
+                    <div class="location-detail">
+                        <div class="location-detail-icon">📞</div>
+                        <div class="location-detail-text">
+                            <strong>Teléfono</strong>
+                            <a href="tel:+34604812862">604 81 28 62</a>
+                        </div>
+                    </div>
+                    <div class="location-detail">
+                        <div class="location-detail-icon">💬</div>
+                        <div class="location-detail-text">
+                            <strong>WhatsApp</strong>
+                            <a href="https://wa.me/+34604812862" target="_blank">Enviar mensaje</a>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/lacolmenacrossfitsevilla/" target="_blank" class="social-link" aria-label="Instagram">📸</a>
+                        <a href="https://www.facebook.com/LaColmenaCrossFit" target="_blank" class="social-link" aria-label="Facebook">👍</a>
+                        <a href="https://wa.me/+34604812862" target="_blank" class="social-link" aria-label="WhatsApp">💬</a>
+                    </div>
+                </div>
+                <div class="map-wrapper">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3170.8!2d-5.9597449!3d37.4143714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd126938293b1ed5%3A0xcb579ee9c33067ae!2sLa%20Colmena%20CrossFit!5e0!3m2!1ses!2ses" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa La Colmena CrossFit"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" id="contacto">
+        <div class="container">
+            <div class="cta-stamp">
+                <span class="cta-stamp-text">Clase<br>Gratis</span>
+            </div>
+            <h2>¿Listo Para Empezar?</h2>
+            <p>Tu primera clase es <strong>GRATIS</strong>. Ven a probar sin compromiso.</p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/+34604812862?text=Hola!%20Me%20gustaría%20probar%20una%20clase%20gratis" target="_blank" class="btn btn-white">★ WhatsApp</a>
+                <a href="tel:+34604812862" class="btn btn-outline-red">📞 604 81 28 62</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <img src="https://lacolmenacf.es/wp-content/uploads/2024/03/LOGO-POWER-BRERO.png" alt="La Colmena CrossFit" loading="lazy">
+                    <p>Tu box de CrossFit en Sevilla. Un lugar donde cada persona encuentra su sitio. Más de 1000m² de instalaciones y una comunidad que te espera.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/lacolmenacrossfitsevilla/" target="_blank" class="social-link" aria-label="Instagram">📸</a>
+                        <a href="https://www.facebook.com/LaColmenaCrossFit" target="_blank" class="social-link" aria-label="Facebook">👍</a>
+                        <a href="https://wa.me/+34604812862" target="_blank" class="social-link" aria-label="WhatsApp">💬</a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Actividades</h4>
+                    <ul class="footer-links">
+                        <li><a href="#actividades">CrossFit</a></li>
+                        <li><a href="#actividades">On Ramp</a></li>
+                        <li><a href="#actividades">Athlete</a></li>
+                        <li><a href="#actividades">Halterofilia</a></li>
+                        <li><a href="#actividades">Hyrox</a></li>
+                        <li><a href="#actividades">Running</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contacto</h4>
+                    <ul class="footer-links">
+                        <li><a href="tel:+34604812862">📞 604 81 28 62</a></li>
+                        <li><a href="https://wa.me/+34604812862" target="_blank">💬 WhatsApp</a></li>
+                        <li><a href="https://www.instagram.com/lacolmenacrossfitsevilla/" target="_blank">📸 Instagram</a></li>
+                        <li><a href="https://www.facebook.com/LaColmenaCrossFit" target="_blank">👍 Facebook</a></li>
+                        <li><a href="#ubicacion">📍 Cómo llegar</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 La Colmena Training Center S.L. Todos los derechos reservados.</p>
+                <ul class="footer-legal">
+                    <li><a href="aviso-legal.html">Aviso Legal</a></li>
+                    <li><a href="politica-privacidad.html">Privacidad</a></li>
+                    <li><a href="politica-cookies.html">Cookies</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Nav scroll
+        const nav = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 20);
+        });
+
+        // Mobile menu
+        const toggle = document.getElementById('navToggle');
+        const links = document.getElementById('navLinks');
+        toggle.addEventListener('click', () => {
+            links.classList.toggle('open');
+            const spans = toggle.querySelectorAll('span');
+            if (links.classList.contains('open')) {
+                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+            } else {
+                spans[0].style.transform = '';
+                spans[1].style.opacity = '';
+                spans[2].style.transform = '';
+            }
+        });
+
+        links.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                links.classList.remove('open');
+                const spans = toggle.querySelectorAll('span');
+                spans[0].style.transform = '';
+                spans[1].style.opacity = '';
+                spans[2].style.transform = '';
+            });
+        });
+
+        // Scroll fade-in
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

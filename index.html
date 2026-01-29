@@ -3,335 +3,274 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="La Colmena CrossFit - Tu box de CrossFit en Sevilla. Un lugar para todos. Prueba gratis tu primera clase.">
-    <title>La Colmena CrossFit | Tu Box en Sevilla</title>
+    <title>La Colmena CrossFit — Landing Variants</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a;
+            color: #f5f5f5;
+            min-height: 100vh;
+        }
+        header {
+            text-align: center;
+            padding: 4rem 2rem 2rem;
+        }
+        header img {
+            height: 60px;
+            margin-bottom: 1.5rem;
+        }
+        header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+        header p {
+            color: #888;
+            font-size: 1.05rem;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem 4rem;
+        }
+        .card {
+            background: #161616;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: #FFB800;
+        }
+        .card a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .card-preview {
+            height: 200px;
+            overflow: hidden;
+            border-bottom: 1px solid #2a2a2a;
+            position: relative;
+        }
+        .card-preview iframe {
+            width: 200%;
+            height: 200%;
+            transform: scale(0.5);
+            transform-origin: top left;
+            border: none;
+            pointer-events: none;
+        }
+        .card-body {
+            padding: 1.25rem;
+        }
+        .card-body h2 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.35rem;
+        }
+        .card-number {
+            color: #FFB800;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-bottom: 0.35rem;
+            display: block;
+        }
+        .card-body p {
+            color: #888;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        .tag {
+            display: inline-block;
+            background: #FFB80018;
+            color: #FFB800;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-top: 0.75rem;
+        }
+        .tag.original {
+            background: #FFB800;
+            color: #0a0a0a;
+        }
+        @media (max-width: 480px) {
+            .grid { grid-template-columns: 1fr; }
+            header h1 { font-size: 1.5rem; }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="container">
-            <a href="#" class="logo">
-                <img src="https://lacolmenacf.es/wp-content/uploads/2024/03/LOGO-POWER-BRERO.png" alt="La Colmena CrossFit" class="logo-img">
-            </a>
-            <button class="nav-toggle" id="navToggle" aria-label="Menú">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#actividades">Actividades</a></li>
-                <li><a href="#nosotros">Nosotros</a></li>
-                <li><a href="#horarios">Horarios</a></li>
-                <li><a href="#ubicacion">Ubicación</a></li>
-                <li><a href="#contacto" class="btn btn-nav">Contacta</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <header class="hero" id="hero">
-        <div class="hero-overlay"></div>
-        <div class="container hero-content">
-            <h1 class="hero-title">LA COLMENA CROSSFIT</h1>
-            <p class="hero-subtitle">UN LUGAR PARA TOD@S</p>
-            <p class="hero-description">Tu box de CrossFit en Sevilla. Más de 1000m² de instalaciones. Entrena con profesionales, mejora tu vida.</p>
-            <div class="hero-cta">
-                <a href="#contacto" class="btn btn-primary btn-large">PRUEBA GRATIS</a>
-                <a href="#actividades" class="btn btn-outline btn-large">NUESTRAS ACTIVIDADES</a>
-            </div>
-            <div class="hero-stats">
-                <div class="stat">
-                    <span class="stat-number">4.9</span>
-                    <span class="stat-label">★ Google Reviews</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">1000m²</span>
-                    <span class="stat-label">Instalaciones</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">6</span>
-                    <span class="stat-label">Actividades</span>
-                </div>
-            </div>
-        </div>
-        <a href="#actividades" class="scroll-down">
-            <span>↓</span>
-        </a>
+    <header>
+        <img src="https://lacolmenacf.es/wp-content/uploads/2024/03/LOGO-POWER-BRERO.png" alt="La Colmena CrossFit">
+        <h1>LANDING VARIANTS</h1>
+        <p>11 diseños diferentes para la landing de La Colmena CrossFit</p>
     </header>
 
-    <!-- Actividades -->
-    <section class="section" id="actividades">
-        <div class="container">
-            <h2 class="section-title">NUESTRAS ACTIVIDADES</h2>
-            <p class="section-intro">Ofrecemos una variedad de programas para todos los niveles y objetivos</p>
-            <div class="activities-grid">
-                <div class="activity">
-                    <span class="activity-icon">🏋️</span>
-                    <h3>CrossFit</h3>
-                    <p>Entrenamiento funcional de alta intensidad constantemente variado. Para todos los niveles.</p>
+    <div class="grid">
+        <div class="card">
+            <a href="v01/index.html">
+                <div class="card-preview">
+                    <iframe src="v01/index.html" loading="lazy"></iframe>
                 </div>
-                <div class="activity featured">
-                    <span class="activity-badge">⭐ RECOMENDADO</span>
-                    <span class="activity-icon">🎯</span>
-                    <h3>On Ramp</h3>
-                    <p>Nuestra actividad estrella para no iniciados. Aprende las bases del CrossFit de forma segura y progresiva.</p>
+                <div class="card-body">
+                    <span class="card-number">V01</span>
+                    <h2>Original</h2>
+                    <p>El diseño original. Dark theme con amarillo y gris, tipografía Oswald, estilo deportivo profesional.</p>
+                    <span class="tag original">ORIGINAL</span>
                 </div>
-                <div class="activity">
-                    <span class="activity-icon">🏅</span>
-                    <h3>Athlete</h3>
-                    <p>Clases de CrossFit orientadas a la competición. Para quienes quieren llevar su entrenamiento al siguiente nivel.</p>
-                </div>
-                <div class="activity">
-                    <span class="activity-icon">🏆</span>
-                    <h3>Halterofilia</h3>
-                    <p>Técnica y fuerza con los movimientos olímpicos: arrancada y dos tiempos.</p>
-                </div>
-                <div class="activity">
-                    <span class="activity-icon">🔥</span>
-                    <h3>Hyrox</h3>
-                    <p>Prepárate para las competiciones de fitness más exigentes. Entrenamiento específico en nuestro segundo local.</p>
-                </div>
-                <div class="activity">
-                    <span class="activity-icon">🏃</span>
-                    <h3>Running</h3>
-                    <p>Mejora tu técnica y resistencia. Sesiones específicas para corredores de todos los niveles.</p>
-                </div>
-            </div>
+            </a>
         </div>
-    </section>
 
-    <!-- Nosotros -->
-    <section class="section section-dark" id="nosotros">
-        <div class="container">
-            <h2 class="section-title">NUESTRA FILOSOFÍA</h2>
-            <div class="philosophy">
-                <div class="philosophy-item">
-                    <h3>Misión</h3>
-                    <p>En La Colmena CrossFit queremos entregarte las herramientas para que puedas mantenerte en forma y saludable mediante el ejercicio, la alimentación, el esfuerzo y la constancia.</p>
-                    <p>Queremos que aprendas a disfrutar de esta manera de vivir, de este estilo de vida de manera consciente. Que asimiles que entrenas para ser mejor, para sentirte mejor, para pasarlo bien de manera individual y también junto a todos tus compañeros de clase.</p>
+        <div class="card">
+            <a href="v02-brutal-industrial/index.html">
+                <div class="card-preview">
+                    <iframe src="v02-brutal-industrial/index.html" loading="lazy"></iframe>
                 </div>
-                <div class="philosophy-item highlight">
-                    <blockquote>
-                        "No importa tu nivel, nuestro box es <strong>#unlugarparatodos</strong>. Nuestras puertas están abiertas para todos los que quieran vivir una experiencia positiva, en un buen ambiente, de la mano de profesionales de primer nivel."
-                    </blockquote>
+                <div class="card-body">
+                    <span class="card-number">V02</span>
+                    <h2>Brutal / Industrial</h2>
+                    <p>Diseño brutalista, tipografía pesada, contrastes fuertes, estructura de grid expuesta, amarillo agresivo.</p>
+                    <span class="tag">EXPLORATORIO</span>
                 </div>
-                <div class="philosophy-item">
-                    <h3>Visión</h3>
-                    <p>Creemos en un mañana con gente alegre, motivada, con ganas de levantarse y salir a la calle a aprovechar el día, con ganas de contagiar buenas vibras y sensaciones.</p>
-                    <p>CrossFit ha cambiado la vida de muchos a lo largo de las últimas dos décadas, y esto no está más que comenzando. En La Colmena nos apasiona este desafío.</p>
-                </div>
-            </div>
+            </a>
         </div>
-    </section>
 
-    <!-- Horarios -->
-    <section class="section" id="horarios">
-        <div class="container">
-            <h2 class="section-title">HORARIOS</h2>
-            <div class="schedule-grid">
-                <div class="schedule-card">
-                    <h3>Lunes a Jueves</h3>
-                    <div class="schedule-times">
-                        <div class="time-slot">
-                            <span class="time-range">6:45 - 12:00</span>
-                            <span class="time-label">Mañanas</span>
-                        </div>
-                        <div class="time-slot">
-                            <span class="time-range">16:00 - 22:00</span>
-                            <span class="time-label">Tardes</span>
-                        </div>
-                    </div>
+        <div class="card">
+            <a href="v03-minimal-white/index.html">
+                <div class="card-preview">
+                    <iframe src="v03-minimal-white/index.html" loading="lazy"></iframe>
                 </div>
-                <div class="schedule-card">
-                    <h3>Viernes</h3>
-                    <div class="schedule-times">
-                        <div class="time-slot">
-                            <span class="time-range">6:45 - 12:00</span>
-                            <span class="time-label">Mañanas</span>
-                        </div>
-                        <div class="time-slot">
-                            <span class="time-range">16:00 - 21:00</span>
-                            <span class="time-label">Tardes</span>
-                        </div>
-                    </div>
+                <div class="card-body">
+                    <span class="card-number">V03</span>
+                    <h2>Minimal White</h2>
+                    <p>Fondo blanco, mucho espacio, tipografía elegante, acentos sutiles gris/amarillo. Estilo Apple.</p>
+                    <span class="tag">EXPLORATORIO</span>
                 </div>
-                <div class="schedule-card">
-                    <h3>Sábado</h3>
-                    <div class="schedule-times">
-                        <div class="time-slot single">
-                            <span class="time-range">8:30 - 13:30</span>
-                            <span class="time-label">Mañanas</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <p class="schedule-note">Introducimos nuevas actividades y modalidades continuamente. Contacta para más detalles sobre horarios específicos de cada actividad.</p>
-            <div class="schedule-cta">
-                <a href="https://wa.me/+34604812862?text=Hola!%20Me%20gustaría%20conocer%20los%20horarios%20de%20clases" class="btn btn-primary" target="_blank">
-                    📅 Consultar horarios de clases
-                </a>
-            </div>
+            </a>
         </div>
-    </section>
 
-    <!-- Instalaciones -->
-    <section class="section section-accent" id="instalaciones">
-        <div class="container">
-            <h2 class="section-title">NUESTRAS INSTALACIONES</h2>
-            <div class="locations-grid">
-                <div class="location-card main">
-                    <div class="location-card-header">
-                        <span class="location-badge">LOCAL PRINCIPAL</span>
-                        <h3>La Colmena CrossFit</h3>
-                    </div>
-                    <div class="location-card-body">
-                        <p class="location-size">1000 m²</p>
-                        <p class="location-address">📍 C/ Destornillador, 15</p>
-                        <ul class="location-features">
-                            <li>CrossFit</li>
-                            <li>On Ramp</li>
-                            <li>Athlete</li>
-                            <li>Halterofilia</li>
-                            <li>Hyrox</li>
-                        </ul>
-                    </div>
+        <div class="card">
+            <a href="v04-dark-premium-gold/index.html">
+                <div class="card-preview">
+                    <iframe src="v04-dark-premium-gold/index.html" loading="lazy"></iframe>
                 </div>
-                <div class="location-card">
-                    <div class="location-card-header">
-                        <span class="location-badge">SEGUNDO LOCAL</span>
-                        <h3>La Colmena Training Center</h3>
-                    </div>
-                    <div class="location-card-body">
-                        <p class="location-distance">📍 A 700m del box principal</p>
-                        <ul class="location-features">
-                            <li>Hyrox</li>
-                            <li>Running</li>
-                            <li>Entrenamiento específico</li>
-                        </ul>
-                    </div>
+                <div class="card-body">
+                    <span class="card-number">V04</span>
+                    <h2>Dark Premium / Gold</h2>
+                    <p>Negro con acentos dorados, tipografía serif elegante, sensación de lujo y exclusividad.</p>
+                    <span class="tag">EXPLORATORIO</span>
                 </div>
-            </div>
+            </a>
         </div>
-    </section>
 
-    <!-- Por qué elegirnos -->
-    <section class="section" id="beneficios">
-        <div class="container">
-            <h2 class="section-title">¿POR QUÉ LA COLMENA?</h2>
-            <div class="benefits-grid">
-                <div class="benefit">
-                    <span class="benefit-number">01</span>
-                    <h4>Profesionales de primer nivel</h4>
-                    <p>Coaches certificados que te guiarán en cada paso de tu entrenamiento</p>
+        <div class="card">
+            <a href="v05-gradient-neon/index.html">
+                <div class="card-preview">
+                    <iframe src="v05-gradient-neon/index.html" loading="lazy"></iframe>
                 </div>
-                <div class="benefit">
-                    <span class="benefit-number">02</span>
-                    <h4>Ambiente familiar</h4>
-                    <p>Todos los días te recibiremos con una sonrisa. Aquí todos somos compañeros</p>
+                <div class="card-body">
+                    <span class="card-number">V05</span>
+                    <h2>Gradient Neon</h2>
+                    <p>Base oscura con gradientes vibrantes azul→púrpura→rosa, efectos neón, glassmorphism.</p>
+                    <span class="tag">EXPLORATORIO</span>
                 </div>
-                <div class="benefit">
-                    <span class="benefit-number">03</span>
-                    <h4>Adaptado a tu nivel</h4>
-                    <p>Da igual si empiezas de cero o eres atleta experimentado. Hay sitio para ti</p>
-                </div>
-                <div class="benefit">
-                    <span class="benefit-number">04</span>
-                    <h4>Variedad de actividades</h4>
-                    <p>6 disciplinas diferentes para que encuentres la que mejor se adapta a ti</p>
-                </div>
-            </div>
+            </a>
         </div>
-    </section>
 
-    <!-- Ubicación -->
-    <section class="section section-dark" id="ubicacion">
-        <div class="container">
-            <h2 class="section-title">ENCUÉNTRANOS</h2>
-            <div class="location-wrapper">
-                <div class="location-info">
-                    <div class="location-address">
-                        <h3>📍 Local Principal</h3>
-                        <p>C. Destornillador, 15<br>
-                        (antiguo 3-8), Norte<br>
-                        41008 Sevilla</p>
-                    </div>
-                    <div class="location-contact">
-                        <h3>📞 Contacto</h3>
-                        <a href="tel:+34604812862" class="contact-link">604 81 28 62</a>
-                        <a href="https://wa.me/+34604812862" class="btn btn-whatsapp" target="_blank">
-                            💬 WhatsApp
-                        </a>
-                    </div>
-                    <div class="location-social">
-                        <h3>Síguenos</h3>
-                        <div class="social-links">
-                            <a href="https://www.instagram.com/lacolmenacrossfitsevilla/" target="_blank" class="social-link">Instagram</a>
-                            <a href="https://www.facebook.com/LaColmenaCrossFit" target="_blank" class="social-link">Facebook</a>
-                        </div>
-                    </div>
+        <div class="card">
+            <a href="v06-earth-organic/index.html">
+                <div class="card-preview">
+                    <iframe src="v06-earth-organic/index.html" loading="lazy"></iframe>
                 </div>
-                <div class="location-map">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3170.8!2d-5.9597449!3d37.4143714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd126938293b1ed5%3A0xcb579ee9c33067ae!2sLa%20Colmena%20CrossFit!5e0!3m2!1ses!2ses!4v1706000000000!5m2!1ses!2ses" 
-                        width="100%" 
-                        height="400" 
-                        style="border:0;" 
-                        allowfullscreen="" 
-                        loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
+                <div class="card-body">
+                    <span class="card-number">V06</span>
+                    <h2>Earth / Organic</h2>
+                    <p>Paleta cálida de tierra: oliva, terracota, beige, miel. Formas orgánicas y redondeadas.</p>
+                    <span class="tag">EXPLORATORIO</span>
                 </div>
-            </div>
+            </a>
         </div>
-    </section>
 
-    <!-- CTA / Contacto -->
-    <section class="section section-cta" id="contacto">
-        <div class="container">
-            <div class="cta-content">
-                <h2>¿LISTO PARA EMPEZAR?</h2>
-                <p>Tu primera clase es <strong>GRATIS</strong>. Sin compromiso, sin excusas.<br>Empieza con nuestro programa <strong>On Ramp</strong> si nunca has hecho CrossFit.</p>
-                <div class="cta-buttons">
-                    <a href="https://wa.me/+34604812862?text=Hola!%20Me%20gustaría%20probar%20una%20clase%20gratis" class="btn btn-primary btn-large" target="_blank">
-                        💬 RESERVA TU CLASE GRATIS
-                    </a>
-                    <a href="tel:+34604812862" class="btn btn-outline btn-large">
-                        📞 LLÁMANOS
-                    </a>
+        <div class="card">
+            <a href="v07-retro-gym/index.html">
+                <div class="card-preview">
+                    <iframe src="v07-retro-gym/index.html" loading="lazy"></iframe>
                 </div>
-                <p class="cta-note">Te responderemos lo antes posible</p>
-            </div>
+                <div class="card-body">
+                    <span class="card-number">V07</span>
+                    <h2>Retro Gym</h2>
+                    <p>Estética vintage de gimnasio años 70-80. Rojo, crema y azul marino, tipografía bloque retro.</p>
+                    <span class="tag">EXPLORATORIO</span>
+                </div>
+            </a>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <img src="https://lacolmenacf.es/wp-content/uploads/2024/03/LOGO-POWER-BRERO.png" alt="La Colmena CrossFit" class="footer-logo">
-                    <p>Tu box de CrossFit en Sevilla</p>
+        <div class="card">
+            <a href="v08-tech-futuristic/index.html">
+                <div class="card-preview">
+                    <iframe src="v08-tech-futuristic/index.html" loading="lazy"></iframe>
                 </div>
-                <div class="footer-links">
-                    <a href="https://www.instagram.com/lacolmenacrossfitsevilla/" target="_blank">Instagram</a>
-                    <a href="https://www.facebook.com/LaColmenaCrossFit" target="_blank">Facebook</a>
+                <div class="card-body">
+                    <span class="card-number">V08</span>
+                    <h2>Tech / Futuristic</h2>
+                    <p>Azul navy oscuro, acentos cyan, patrones geométricos, tipografía monospace, estilo sci-fi.</p>
+                    <span class="tag">EXPLORATORIO</span>
                 </div>
-            </div>
-            <div class="footer-bottom">
-                <p>© 2026 La Colmena Training Center S.L. Todos los derechos reservados.</p>
-                <div class="footer-legal">
-                    <a href="aviso-legal.html">Aviso Legal</a>
-                    <a href="politica-privacidad.html">Política de Privacidad</a>
-                    <a href="politica-cookies.html">Política de Cookies</a>
-                </div>
-            </div>
+            </a>
         </div>
-    </footer>
 
-    <script src="script.js"></script>
+        <div class="card">
+            <a href="v09-bold-typography/index.html">
+                <div class="card-preview">
+                    <iframe src="v09-bold-typography/index.html" loading="lazy"></iframe>
+                </div>
+                <div class="card-body">
+                    <span class="card-number">V09</span>
+                    <h2>Bold Typography</h2>
+                    <p>Tipografía oversized como elemento visual principal. Blanco y negro con amarillo como único acento.</p>
+                    <span class="tag">EXPLORATORIO</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="card">
+            <a href="v10-warm-community/index.html">
+                <div class="card-preview">
+                    <iframe src="v10-warm-community/index.html" loading="lazy"></iframe>
+                </div>
+                <div class="card-body">
+                    <span class="card-number">V10</span>
+                    <h2>Warm Community</h2>
+                    <p>Cálido y cercano. Ámbar, coral, grises suaves. Tarjetas redondeadas, sombras suaves. Estilo Airbnb.</p>
+                    <span class="tag">EXPLORATORIO</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="card">
+            <a href="v11-split-asymmetric/index.html">
+                <div class="card-preview">
+                    <iframe src="v11-split-asymmetric/index.html" loading="lazy"></iframe>
+                </div>
+                <div class="card-body">
+                    <span class="card-number">V11</span>
+                    <h2>Split / Asymmetric</h2>
+                    <p>Layouts asimétricos, secciones divididas, separadores diagonales, estilo editorial/magazine.</p>
+                    <span class="tag">EXPLORATORIO</span>
+                </div>
+            </a>
+        </div>
+    </div>
 </body>
 </html>
