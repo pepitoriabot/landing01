@@ -1,0 +1,2 @@
+# Video assets are served locally, not tracked in git
+*.mp4
