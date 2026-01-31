@@ -667,6 +667,17 @@ h1, h2, h3, h4, h5, h6 {
     border-color: var(--color-darker);
 }
 
+.section-cta .btn-whatsapp {
+    background: var(--color-dark);
+    color: var(--color-whatsapp);
+    border-color: var(--color-dark);
+}
+
+.section-cta .btn-whatsapp:hover {
+    background: var(--color-darker);
+    border-color: var(--color-darker);
+}
+
 .section-cta .btn-outline {
     color: var(--color-dark);
     border-color: var(--color-dark);
