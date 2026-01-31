@@ -98,6 +98,70 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
     document.head.appendChild(style);
 
+    // Contact form submission
+    const contactForm = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const formStatus = document.getElementById('formStatus');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            // Honeypot check — bots fill hidden fields
+            if (document.getElementById('website').value) {
+                formStatus.textContent = 'Mensaje enviado correctamente. Te responderemos pronto.';
+                formStatus.className = 'form-status success';
+                contactForm.reset();
+                return;
+            }
+
+            // Turnstile token
+            const turnstileToken = document.querySelector('[name="cf-turnstile-response"]')?.value;
+            if (!turnstileToken) {
+                formStatus.textContent = 'Por favor, completa la verificación de seguridad.';
+                formStatus.className = 'form-status error';
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'ENVIANDO...';
+            formStatus.textContent = '';
+            formStatus.className = 'form-status';
+
+            const data = {
+                nombre: document.getElementById('nombre').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                telefono: document.getElementById('telefono').value.trim(),
+                mensaje: document.getElementById('mensaje').value.trim(),
+                'cf-turnstile-response': turnstileToken,
+            };
+
+            try {
+                const res = await fetch('https://lacolmenacontact.jlmontesj.workers.dev/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data),
+                });
+
+                if (res.ok) {
+                    formStatus.textContent = 'Mensaje enviado correctamente. Te responderemos pronto.';
+                    formStatus.className = 'form-status success';
+                    contactForm.reset();
+                    if (typeof turnstile !== 'undefined') turnstile.reset();
+                } else {
+                    formStatus.textContent = 'Error al enviar el mensaje. Inténtalo de nuevo.';
+                    formStatus.className = 'form-status error';
+                }
+            } catch (err) {
+                formStatus.textContent = 'Error de conexión. Inténtalo de nuevo.';
+                formStatus.className = 'form-status error';
+            }
+
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'ENVIAR MENSAJE';
+        });
+    }
+
     // Console welcome message
     console.log('%c🐝 La Colmena CrossFit', 'font-size: 24px; font-weight: bold; color: #FFB800;');
     console.log('%cUn lugar para tod@s', 'font-size: 14px; color: #888;');
