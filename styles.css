@@ -245,7 +245,7 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
     justify-content: center;
     background: linear-gradient(135deg, var(--color-darker) 0%, var(--color-gray) 100%);
-    background-image: url('https://lacolmenacf.es/wp-content/uploads/2024/03/FER00019-scaled.jpg');
+    background-image: url('img/FER00019-scaled.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
